@@ -1,0 +1,16 @@
+{
+    "MondayStart":9,
+    "MondayEnd":17,
+    "TuesdayStart":9,
+    "TuesdayEnd":17,
+    "WednesdayStart":9,
+    "WednesdayEnd":17,
+    "ThursdayStart":9,
+    "ThursdayEnd":17,
+    "FridayStart":9,
+    "FridayEnd":17,
+    "SaturdayStart":9,
+    "SaturdayEnd":17,
+    "SundayStart":9,
+    "SundayEnd":17
+}

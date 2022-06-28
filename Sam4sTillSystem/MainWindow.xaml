@@ -1,0 +1,770 @@
+﻿<Window x:Class="Sam4sTillSystem.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:Sam4sTillSystem.Controls"
+        xmlns:dailyitemsectionbreakdown="clr-namespace:Sam4sTillSystem.Screens.DailyItemSectionBreakdown"
+        xmlns:funtions="clr-namespace:Sam4sTillSystem.Screens.Funtions"
+        xmlns:cloudfunctions="clr-namespace:Sam4sTillSystem.Screens.CloudFunctions"
+        xmlns:screens="clr-namespace:Sam4sTillSystem.Screens" xmlns:itempipeline="clr-namespace:Sam4sTillSystem.Screens.ItemPipeline" xmlns:dailystats="clr-namespace:Sam4sTillSystem.Screens.DailyStats"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="808" Width="1024">
+    <Grid x:Name="MainWindowGrid">
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*" x:Name="LayoutLeftSectionColumnDefinition"/>
+            <ColumnDefinition Width="*"  x:Name="LayoutRightSectionColumnDefinition"/>
+        </Grid.ColumnDefinitions>
+        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="122" x:Name="LayoutNavMenuHeight" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="5" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <screens:LoginScreen x:Name="LoginScreenControl" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="0" Grid.RowSpan="4"/>
+
+        <!-- Navigation Bar -->
+        <Grid x:Name="LayoutNavigationGrid" Grid.Row="0" Grid.Column="0" Visibility="Hidden" Margin="2.5">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="2" />
+            </Grid.RowDefinitions>
+
+            <controls:ClickableTile x:Name="NavMenu1" Grid.Row="0" Grid.Column="0" Click="NavMenuPressed" Margin="2.5, 2.5, 2.5, 2.5" />
+            <controls:ClickableTile x:Name="NavMenu2" Grid.Row="0" Grid.Column="1" Click="NavMenuPressed" Margin="2.5, 2.5, 2.5, 2.5" />
+            <controls:ClickableTile x:Name="NavMenu3" Grid.Row="0" Grid.Column="2" Click="NavMenuPressed" Margin="2.5, 2.5, 2.5, 2.5" />
+            <controls:ClickableTile x:Name="NavMenu4" Grid.Row="0" Grid.Column="3" Click="NavMenuPressed" Margin="2.5, 2.5, 2.5, 2.5" />
+            <controls:ClickableTile x:Name="NavMenu5" Grid.Row="0" Grid.Column="4" Click="NavMenuPressed" Margin="2.5, 2.5, 2.5, 2.5" />
+            <controls:ClickableTile x:Name="NavMenu6" Grid.Row="0" Grid.Column="5" Click="NavMenuPressed" Margin="2.5, 2.5, 2.5, 2.5" />
+            <controls:ClickableTile x:Name="NavMenuFunctionsButton" Grid.Row="0" Grid.Column="7" Click="FunctionButtonPressed" Margin="2.5, 2.5, 2.5, 2.5" Text="Till Functions" />
+
+            <controls:ClickableTile x:Name="NavMenu7" Grid.Row="1" Grid.Column="0" Click="NavMenuPressed" Margin="2.5, 2.5, 2.5, 2.5" />
+            <controls:ClickableTile x:Name="NavMenu8" Grid.Row="1" Grid.Column="1" Click="NavMenuPressed" Margin="2.5, 2.5, 2.5, 2.5" />
+            <controls:ClickableTile x:Name="NavMenu9" Grid.Row="1" Grid.Column="2" Click="NavMenuPressed" Margin="2.5, 2.5, 2.5, 2.5" />
+            <controls:ClickableTile x:Name="NavMenu10" Grid.Row="1" Grid.Column="3" Click="NavMenuPressed" Margin="2.5, 2.5, 2.5, 2.5" />
+            <controls:ClickableTile x:Name="NavMenu11" Grid.Row="1" Grid.Column="4" Click="NavMenuPressed" Margin="2.5, 2.5, 2.5, 2.5" />
+            <controls:ClickableTile x:Name="NavMenu12" Grid.Row="1" Grid.Column="5" Click="NavMenuPressed" Margin="2.5, 2.5, 2.5, 2.5" />
+            <controls:ClickableTile Grid.Row="1" Grid.Column="7" Click="CloudFunctionsButtonPressed" Margin="2.5, 2.5, 2.5, 2.5" Text="Cloud Functions" />
+        </Grid>
+
+        <!-- Line Below Screen Title -->
+        <Border x:Name="ScreenTitleUpperLine" Grid.Row="0" Grid.Column="0"  BorderBrush="Black" BorderThickness="0,0,0,1"   Visibility="Hidden"></Border>
+
+        <!-- Screen Title -->
+        <TextBlock x:Name="ScreenTitle" Grid.Row="1" Grid.Column="0"  TextAlignment="Center" VerticalAlignment="Center" FontWeight="Bold" FontSize="14"  Visibility="Hidden"> Screen Title </TextBlock>
+
+        <!-- Line Below Screen Title -->
+        <Border x:Name="ScreenTitleLowerLine" Grid.Row="2" Grid.Column="0"  BorderBrush="Black" BorderThickness="0,0,0,1"   Visibility="Hidden"></Border>
+        
+        <!-- Screens-->
+        <Grid x:Name="LayoutScreenGrid" Grid.Row="3" Grid.Column="0"  Visibility="Hidden">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Cancel Order Screen -->
+            <Grid x:Name="CancelOrderGrid" Grid.Row="0" Grid.ColumnSpan="8" Visibility="Hidden" Margin="0,1,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="155" />
+                </Grid.RowDefinitions>
+
+                <TextBox FontSize="50" TextAlignment="Center" VerticalAlignment="Center" BorderThickness="0"  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Text="Cancel Current Order?" />
+
+                <Button FontSize="14" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="1" Margin="5" Click="GoBackCancelOrderPressed">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Content>
+                        Go Back
+                    </Button.Content>
+                </Button>
+
+                <Button FontSize="14" Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="1"  Margin="5" Click="CancelOrder" Background="Red">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Content>
+                        Cancel Order
+                    </Button.Content>
+                </Button>
+            </Grid>
+
+            <!-- Change Due Screen -->
+            <Grid Grid.Row="0" Grid.ColumnSpan="8"  x:Name="ChangeDueScreen" Visibility="Hidden" Margin="0,1,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="160" />
+                    <RowDefinition Height="160" />
+                </Grid.RowDefinitions>
+
+                <TextBox x:Name="ChangeDueChangeDueTextBox" Text="Change Due" FontSize="40" TextAlignment="Center" VerticalAlignment="Center" BorderThickness="0"  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" />
+
+
+                <Button FontSize="20" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="5" Click="PrintReceipt">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Content>
+                        Print Receipt
+                    </Button.Content>
+                </Button>
+
+                <Button FontSize="20" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Margin="5" Click="ChangeDueScreenNewOrderPressed">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Content>
+                        Start New Order
+                    </Button.Content>
+                </Button>
+            </Grid>
+           
+            <!-- Daily Item Breakdown Screen -->
+            <Grid Grid.Row="0" Grid.ColumnSpan="8"  x:Name="DailyItemBreakdownGrid" Margin="0,1,0,0" Visibility="Hidden">
+                <Grid.ColumnDefinitions>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+
+            </Grid>
+
+            <!-- Daily Stats Screen -->
+            <dailystats:DailyStatsScreen  Grid.Row="0" Grid.ColumnSpan="8"  Margin="0,1,0,0"  Visibility="Visible"/>
+
+            <dailyitemsectionbreakdown:DailyItemSectionBreakdownScreen Grid.Row="0" Grid.ColumnSpan="8"  x:Name="DailyItemSectionBreakdownControl" Margin="0,1,0,0"  Visibility="Hidden"/>
+
+            <funtions:FunctionsScreen Grid.Row="0" Grid.ColumnSpan="8"  Margin="0,1,0,0"  Visibility="Visible"/>
+
+            <funtions:HardwareSettingsScreen Grid.Row="0" Grid.ColumnSpan="8" Margin="0,1,0,0"/>
+            
+            <cloudfunctions:CloudFunctionsScreen Grid.Row="0" Grid.ColumnSpan="8" x:Name="CloudFunctionsScreen" Margin="0,1,0,0"  Visibility="Hidden" />
+
+            <cloudfunctions:CloudUplinkScreen Grid.Row="0" Grid.ColumnSpan="8" x:Name="CloudUplinkScreen" Margin="0,1,0,0"  Visibility="Hidden" />
+
+            <cloudfunctions:CloudLinkStatus Grid.Row="0" Grid.ColumnSpan="8" x:Name="CloudLinkStatusScreen" Margin="0,1,0,0"  Visibility="Hidden" />
+            
+            <itempipeline:ItemSelectScreen Grid.Row="0" Grid.ColumnSpan="8" Margin="0,1,0,0"  />
+
+            <itempipeline:ItemOptionsScreen Grid.Row="0" Grid.ColumnSpan="8" Margin="0,1,0,0"  />
+            
+            <!-- Enter Cash Amount Screen -->
+            <Grid Grid.Row="0" Grid.ColumnSpan="8"  x:Name="PaymentScreen" Visibility="Hidden" Margin="5">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBox x:Name="PaymentInput" FontSize="30" TextAlignment="Right" VerticalAlignment="Center" BorderThickness="0"  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="4" />
+
+                <Button FontSize="20" Grid.Column="0" Grid.Row="1" Margin="5" Background="LightGreen" Click="PaymentNumberPressed">
+                    <Button.Content>
+                        £20
+                    </Button.Content>
+                </Button>
+
+                <Button FontSize="20" Grid.Column="0" Grid.Row="2" Margin="5" Background="LightGreen" Click="PaymentNumberPressed">
+                    <Button.Content>
+                        £10
+                    </Button.Content>
+                </Button>
+
+
+                <Button FontSize="20" Grid.Column="0" Grid.Row="3" Margin="5" Background="LightGreen" Click="PaymentNumberPressed">
+                    <Button.Content>
+                        £5
+                    </Button.Content>
+                </Button>
+
+                <Button FontSize="20" Grid.Column="0" Grid.Row="4" Margin="5" Click="PaymentNumberPressed">
+                    <Button.Content>
+                        Clear
+                    </Button.Content>
+                </Button>
+
+                <Button FontSize="20" Grid.Column="1" Grid.Row="1" Margin="5" Background="Cyan" Click="PaymentNumberPressed">
+                    <Button.Content>
+                        1
+                    </Button.Content>
+                </Button>
+
+                <Button FontSize="20" Grid.Column="1" Grid.Row="2" Margin="5" Background="Cyan" Click="PaymentNumberPressed">
+                    <Button.Content>
+                        4
+                    </Button.Content>
+                </Button>
+
+                <Button FontSize="20" Grid.Column="1" Grid.Row="3" Margin="5" Background="Cyan" Click="PaymentNumberPressed">
+                    <Button.Content>
+                        7
+                    </Button.Content>
+                </Button>
+
+                <Button FontSize="20" Grid.Column="1" Grid.Row="4" Margin="5" Background="Cyan" Click="PaymentNumberPressed">
+                    <Button.Content>
+                        0
+                    </Button.Content>
+                </Button>
+
+                <Button FontSize="20" Grid.Column="2" Grid.Row="1" Margin="5" Background="Cyan" Click="PaymentNumberPressed">
+                    <Button.Content>
+                        2
+                    </Button.Content>
+                </Button>
+
+                <Button FontSize="20" Grid.Column="2" Grid.Row="2" Margin="5" Background="Cyan" Click="PaymentNumberPressed">
+                    <Button.Content>
+                        5
+                    </Button.Content>
+                </Button>
+
+
+                <Button FontSize="20" Grid.Column="2" Grid.Row="3" Margin="5" Background="Cyan" Click="PaymentNumberPressed">
+                    <Button.Content>
+                        8
+                    </Button.Content>
+                </Button>
+
+                <Button FontSize="20" Grid.Column="2" Grid.Row="4" Margin="5" Background="Cyan" Click="PaymentNumberPressed">
+                    <Button.Content>
+                        .
+                    </Button.Content>
+                </Button>
+
+                <Button FontSize="20" Grid.Column="3" Grid.Row="1" Margin="5" Background="Cyan" Click="PaymentNumberPressed">
+                    <Button.Content>
+                        3
+                    </Button.Content>
+                </Button>
+
+                <Button FontSize="20" Grid.Column="3" Grid.Row="2" Margin="5" Background="Cyan" Click="PaymentNumberPressed">
+                    <Button.Content>
+                        6
+                    </Button.Content>
+                </Button>
+
+
+                <Button FontSize="20" Grid.Column="3" Grid.Row="3" Margin="5" Background="Cyan" Click="PaymentNumberPressed">
+                    <Button.Content>
+                        9
+                    </Button.Content>
+                </Button>
+
+                <Button FontSize="20" Grid.Column="3" Grid.Row="4" Margin="5" Click="PaymentNumberPressed">
+                    <Button.Content>
+                        Del
+                    </Button.Content>
+                </Button>
+
+                <Button x:Name="OrderSummaryButton" FontSize="20" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="4" Margin="5" Click="LoadOrderSummaryScreen"  IsEnabled="False">
+                    <Button.Content>
+                        Enter cash amount
+                    </Button.Content>
+                </Button>
+
+                <Button x:Name="AddManualEntryButton" FontSize="20" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="4" Margin="5" Click="AddManualEntryToOrder"  IsEnabled="False" Visibility="Hidden">
+                    <Button.Content>
+                        Enter cash amount
+                    </Button.Content>
+                </Button>
+
+                <Button x:Name="AddDiscountButton" FontSize="20" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="4" Margin="5" Click="AddDiscountToOrder"  IsEnabled="False" Visibility="Hidden">
+                    <Button.Content>
+                        Enter cash amount
+                    </Button.Content>
+                </Button>
+
+                <Button x:Name="AddRefundButton" FontSize="20" Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="4" Margin="5" Click="AddRefundToOrder"  IsEnabled="False" Visibility="Hidden">
+                    <Button.Content>
+                        Enter cash amount
+                    </Button.Content>
+                </Button>
+
+            </Grid>
+
+            <!-- Enter Order Discount Screen -->
+            <screens:OrderDiscountScreen Grid.Row="0" Grid.ColumnSpan="8" Margin="0,1,0,0"/>
+            
+            <!-- No Sale Activations Screen -->
+            <funtions:NoSaleActivationsScreen Grid.Row="0" Grid.ColumnSpan="8"  Margin="0,1,0,0" Visibility="Visible" />
+            
+            <!-- Order Summary Screen -->
+            <Grid Grid.Row="0" Grid.ColumnSpan="8"  x:Name="OrderSummaryScreen" Visibility="Hidden" Margin="0,1,0,0">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition x:Name="OrderSummaryPrintReceiptRowDefinition" Height="50" />
+                    <RowDefinition x:Name="OrderSummaryProcessOrderRowDefinition" Height="50" />
+                </Grid.RowDefinitions>
+
+                <TextBox x:Name="OrderSummaryChangeDueTextBox" Text="Change Due" FontSize="50" TextAlignment="Center" VerticalAlignment="Center" BorderThickness="0"  Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" />
+
+                <Button x:Name="OrderSummaryPrintReceiptButton" FontSize="20" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2" Margin="5" Click="PrintReceipt">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Content>
+                        Print Receipt
+                    </Button.Content>
+                </Button>
+
+                <Button x:Name="OrderSummaryProcessOrderButton" FontSize="20" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"  Margin="5" Click="ChangeDueScreenNewOrderPressed">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                    <Button.Content>
+                        Start New Order
+                    </Button.Content>
+                </Button>
+            </Grid>
+
+            <!-- Table Select Screen -->
+            <screens:TableSelectScreen Grid.Row="0" Grid.ColumnSpan="8" Margin="0,1,0,0" Visibility="Visible" />
+        
+        </Grid>
+
+        <Border x:Name="QuantitySelectorGrid" Grid.Row="3" Grid.Column="0"  BorderBrush="Black" BorderThickness="1" Margin="4" Visibility="Hidden">
+            <Grid Background="AliceBlue" Panel.ZIndex="99">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="Select Quantity" TextAlignment="Center" VerticalAlignment="Center" FontSize="20" />
+
+                <controls:ClickableTile Grid.Row="1" Grid.Column="0" Margin="5" Text="0" Click="QuanitySetterGridAmountSelected" x:Name="QuanitySetterGridControl0" />
+                <controls:ClickableTile Grid.Row="1" Grid.Column="1" Margin="5" Text="1" Click="QuanitySetterGridAmountSelected" x:Name="QuanitySetterGridControl1" />
+                <controls:ClickableTile Grid.Row="1" Grid.Column="2" Margin="5" Text="2" Click="QuanitySetterGridAmountSelected" x:Name="QuanitySetterGridControl2" />
+
+                <controls:ClickableTile Grid.Row="2" Grid.Column="0" Margin="5" Text="3"  Click="QuanitySetterGridAmountSelected" x:Name="QuanitySetterGridControl3"/>
+                <controls:ClickableTile Grid.Row="2" Grid.Column="1" Margin="5" Text="4" Click="QuanitySetterGridAmountSelected" x:Name="QuanitySetterGridControl4" />
+                <controls:ClickableTile Grid.Row="2" Grid.Column="2" Margin="5" Text="5" Click="QuanitySetterGridAmountSelected" x:Name="QuanitySetterGridControl5" />
+
+                <controls:ClickableTile Grid.Row="3" Grid.Column="0" Margin="5" Text="6" Click="QuanitySetterGridAmountSelected" x:Name="QuanitySetterGridControl6" />
+                <controls:ClickableTile Grid.Row="3" Grid.Column="1" Margin="5" Text="7" Click="QuanitySetterGridAmountSelected" x:Name="QuanitySetterGridControl7"/>
+                <controls:ClickableTile Grid.Row="3" Grid.Column="2" Margin="5" Text="8" Click="QuanitySetterGridAmountSelected" x:Name="QuanitySetterGridControl8" />
+
+                <controls:ClickableTile Grid.Row="4" Grid.Column="0" Margin="5" Text="9" Click="QuanitySetterGridAmountSelected" x:Name="QuanitySetterGridControl9" />
+                <controls:ClickableTile Grid.Row="4" Grid.Column="1" Margin="5" Text="10" Click="QuanitySetterGridAmountSelected" x:Name="QuanitySetterGridControl10" />
+                <controls:ClickableTile Grid.Row="4" Grid.Column="2" Margin="5" Text="11" Click="QuanitySetterGridAmountSelected" x:Name="QuanitySetterGridControl11" />
+
+                <controls:ClickableTile Grid.Row="5" Grid.Column="0" Margin="5" Text="12" Click="QuanitySetterGridAmountSelected" x:Name="QuanitySetterGridControl12" />
+                <controls:ClickableTile Grid.Row="5" Grid.Column="1" Margin="5" Text="13" Click="QuanitySetterGridAmountSelected" x:Name="QuanitySetterGridControl13" />
+                <controls:ClickableTile Grid.Row="5" Grid.Column="2" Margin="5" Text="14" Click="QuanitySetterGridAmountSelected" x:Name="QuanitySetterGridControl14" />
+
+                <controls:ClickableTile Grid.Row="6" Grid.Column="0" Margin="5" Text="15" Click="QuanitySetterGridAmountSelected" x:Name="QuanitySetterGridControl15" />
+                <controls:ClickableTile Grid.Row="6" Grid.Column="1" Margin="5" Text="16" Click="QuanitySetterGridAmountSelected" x:Name="QuanitySetterGridControl16" />
+                <controls:ClickableTile Grid.Row="6" Grid.Column="2" Margin="5" Text="17" Click="QuanitySetterGridAmountSelected" x:Name="QuanitySetterGridControl17" />
+
+                <controls:ClickableTile Grid.Row="7" Grid.Column="0" Margin="5" Text="18"  Click="QuanitySetterGridAmountSelected" x:Name="QuanitySetterGridControl18"/>
+                <controls:ClickableTile Grid.Row="7" Grid.Column="1" Margin="5" Text="19" Click="QuanitySetterGridAmountSelected" x:Name="QuanitySetterGridControl19" />
+                <controls:ClickableTile Grid.Row="7" Grid.Column="2" Margin="5" Text="20" Click="QuanitySetterGridAmountSelected" x:Name="QuanitySetterGridControl20" />
+            </Grid>
+        </Border>
+        
+        <Border x:Name="CostBreakdownGrid" Grid.Row="3" Grid.Column="0"  BorderBrush="Black" BorderThickness="1" Margin="4" Visibility="Hidden">
+            <Grid Background="AliceBlue" Panel.ZIndex="99" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="3*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="2*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="2*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Grid.Row="0" Grid.Column="0" Padding="5" Text="Name" />
+                <TextBlock Grid.Row="0" Grid.Column="1" Padding="5" Text="Cost Per Extra" TextAlignment="Right" />
+                <TextBlock Grid.Row="0" Grid.Column="2" Padding="5" Text="Discount Per Removal" TextAlignment="Right" />
+                <TextBlock Grid.Row="0" Grid.Column="3" Padding="5" Text="Difference" TextAlignment="Right" />
+                <TextBlock Grid.Row="0" Grid.Column="4" Padding="5" Text="Cost" TextAlignment="Right" />
+                <Border  Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="5"  BorderBrush="Black" BorderThickness="0,0,0,1"/>
+
+                <TextBlock x:Name="CostBreakdownName0" Grid.Row="1" Grid.Column="0" Padding="5" Text="Bacon" />
+                <TextBlock x:Name="CostBreakdownAddAmount0" Grid.Row="1" Grid.Column="1" Padding="5" Text="£0.95" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownRemoveAmount0" Grid.Row="1" Grid.Column="2" Padding="5" Text="£0.88" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownDiff0" Grid.Row="1" Grid.Column="3" Padding="5" Text="+2 Qty" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownCost0" Grid.Row="1" Grid.Column="4" Padding="5" Text="£1.90" TextAlignment="Right" />
+
+                <TextBlock x:Name="CostBreakdownName1" Grid.Row="2" Grid.Column="0" Padding="5" Text="Bacon" />
+                <TextBlock x:Name="CostBreakdownAddAmount1" Grid.Row="2" Grid.Column="1" Padding="5" Text="£0.95" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownRemoveAmount1" Grid.Row="2" Grid.Column="2" Padding="5" Text="£0.88" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownDiff1" Grid.Row="2" Grid.Column="3" Padding="5" Text="+2 Qty" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownCost1" Grid.Row="2" Grid.Column="4" Padding="5" Text="£1.90" TextAlignment="Right" />
+
+                <TextBlock x:Name="CostBreakdownName2" Grid.Row="3" Grid.Column="0" Padding="5" Text="Bacon" />
+                <TextBlock x:Name="CostBreakdownAddAmount2" Grid.Row="3" Grid.Column="1" Padding="5" Text="£0.95" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownRemoveAmount2" Grid.Row="3" Grid.Column="2" Padding="5" Text="£0.88" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownDiff2" Grid.Row="3" Grid.Column="3" Padding="5" Text="+2 Qty" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownCost2" Grid.Row="3" Grid.Column="4" Padding="5" Text="£1.90" TextAlignment="Right" />
+
+                <TextBlock x:Name="CostBreakdownName3" Grid.Row="4" Grid.Column="0" Padding="5" Text="Bacon" />
+                <TextBlock x:Name="CostBreakdownAddAmount3" Grid.Row="4" Grid.Column="1" Padding="5" Text="£0.95" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownRemoveAmount3" Grid.Row="4" Grid.Column="2" Padding="5" Text="£0.88" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownDiff3" Grid.Row="4" Grid.Column="3" Padding="5" Text="+2 Qty" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownCost3" Grid.Row="4" Grid.Column="4" Padding="5" Text="£1.90" TextAlignment="Right" />
+
+                <TextBlock x:Name="CostBreakdownName4" Grid.Row="5" Grid.Column="0" Padding="5" Text="Bacon" />
+                <TextBlock x:Name="CostBreakdownAddAmount4" Grid.Row="5" Grid.Column="1" Padding="5" Text="£0.95"  TextAlignment="Right"/>
+                <TextBlock x:Name="CostBreakdownRemoveAmount4" Grid.Row="5" Grid.Column="2" Padding="5" Text="£0.88" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownDiff4" Grid.Row="5" Grid.Column="3" Padding="5" Text="+2 Qty" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownCost4" Grid.Row="5" Grid.Column="4" Padding="5" Text="£1.90" TextAlignment="Right" />
+
+                <TextBlock x:Name="CostBreakdownName5" Grid.Row="6" Grid.Column="0" Padding="5" Text="Bacon" />
+                <TextBlock x:Name="CostBreakdownAddAmount5" Grid.Row="6" Grid.Column="1" Padding="5" Text="£0.95" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownRemoveAmount5" Grid.Row="6" Grid.Column="2" Padding="5" Text="£0.88"  TextAlignment="Right"/>
+                <TextBlock x:Name="CostBreakdownDiff5" Grid.Row="6" Grid.Column="3" Padding="5" Text="+2 Qty" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownCost5" Grid.Row="6" Grid.Column="4" Padding="5" Text="£1.90" TextAlignment="Right" />
+
+                <TextBlock x:Name="CostBreakdownName6" Grid.Row="7" Grid.Column="0" Padding="5" Text="Bacon" />
+                <TextBlock x:Name="CostBreakdownAddAmount6" Grid.Row="7" Grid.Column="1" Padding="5" Text="£0.95" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownRemoveAmount6" Grid.Row="7" Grid.Column="2" Padding="5" Text="£0.88" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownDiff6" Grid.Row="7" Grid.Column="3" Padding="5" Text="+2 Qty" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownCost6" Grid.Row="7" Grid.Column="4" Padding="5" Text="£1.90" TextAlignment="Right" />
+
+                <TextBlock x:Name="CostBreakdownName7" Grid.Row="8" Grid.Column="0" Padding="5" Text="Bacon" />
+                <TextBlock x:Name="CostBreakdownAddAmount7" Grid.Row="8" Grid.Column="1" Padding="5" Text="£0.95" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownRemoveAmount7" Grid.Row="8" Grid.Column="2" Padding="5" Text="£0.88"  TextAlignment="Right"/>
+                <TextBlock x:Name="CostBreakdownDiff7" Grid.Row="8" Grid.Column="3" Padding="5" Text="+2 Qty" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownCost7" Grid.Row="8" Grid.Column="4" Padding="5" Text="£1.90" TextAlignment="Right" />
+
+                <TextBlock x:Name="CostBreakdownName8" Grid.Row="9" Grid.Column="0" Padding="5" Text="Bacon" />
+                <TextBlock x:Name="CostBreakdownAddAmount8" Grid.Row="9" Grid.Column="1" Padding="5" Text="£0.95" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownRemoveAmount8" Grid.Row="9" Grid.Column="2" Padding="5" Text="£0.88" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownDiff8" Grid.Row="9" Grid.Column="3" Padding="5" Text="+2 Qty" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownCost8" Grid.Row="9" Grid.Column="4" Padding="5" Text="£1.90" TextAlignment="Right" />
+
+                <TextBlock x:Name="CostBreakdownName9" Grid.Row="10" Grid.Column="0" Padding="5" Text="Bacon" />
+                <TextBlock x:Name="CostBreakdownAddAmount9" Grid.Row="10" Grid.Column="1" Padding="5" Text="£0.95" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownRemoveAmount9" Grid.Row="10" Grid.Column="2" Padding="5" Text="£0.88"  TextAlignment="Right"/>
+                <TextBlock x:Name="CostBreakdownDiff9" Grid.Row="10" Grid.Column="3" Padding="5" Text="+2 Qty" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownCost9" Grid.Row="10" Grid.Column="4" Padding="5" Text="£1.90" TextAlignment="Right" />
+
+                <TextBlock x:Name="CostBreakdownName10" Grid.Row="11" Grid.Column="0" Padding="5" Text="Bacon" />
+                <TextBlock x:Name="CostBreakdownAddAmount10" Grid.Row="11" Grid.Column="1" Padding="5" Text="£0.95" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownRemoveAmount10" Grid.Row="11" Grid.Column="2" Padding="5" Text="£0.88" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownDiff10" Grid.Row="11" Grid.Column="3" Padding="5" Text="+2 Qty" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownCost10" Grid.Row="11" Grid.Column="4" Padding="5" Text="£1.90" TextAlignment="Right" />
+
+                <TextBlock x:Name="CostBreakdownName11" Grid.Row="12" Grid.Column="0" Padding="5" Text="Bacon" />
+                <TextBlock x:Name="CostBreakdownAddAmount11" Grid.Row="12" Grid.Column="1" Padding="5" Text="£0.95" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownRemoveAmount11" Grid.Row="12" Grid.Column="2" Padding="5" Text="£0.88" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownDiff11" Grid.Row="12" Grid.Column="3" Padding="5" Text="+2 Qty" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownCost11" Grid.Row="12" Grid.Column="4" Padding="5" Text="£1.90" TextAlignment="Right" />
+
+                <TextBlock x:Name="CostBreakdownName12" Grid.Row="13" Grid.Column="0" Padding="5" Text="Bacon" />
+                <TextBlock x:Name="CostBreakdownAddAmount12" Grid.Row="13" Grid.Column="1" Padding="5" Text="£0.95" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownRemoveAmount12" Grid.Row="13" Grid.Column="2" Padding="5" Text="£0.88" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownDiff12"  Grid.Row="13" Grid.Column="3" Padding="5" Text="+2 Qty" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownCost12" Grid.Row="13" Grid.Column="4" Padding="5" Text="£1.90" TextAlignment="Right" />
+
+                <TextBlock x:Name="CostBreakdownName13" Grid.Row="14" Grid.Column="0" Padding="5" Text="Bacon" />
+                <TextBlock x:Name="CostBreakdownAddAmount13" Grid.Row="14" Grid.Column="1" Padding="5" Text="£0.95" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownRemoveAmount13" Grid.Row="14" Grid.Column="2" Padding="5" Text="£0.88" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownDiff13" Grid.Row="14" Grid.Column="3" Padding="5" Text="+2 Qty" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownCost13" Grid.Row="14" Grid.Column="4" Padding="5" Text="£1.90" TextAlignment="Right" />
+
+                <TextBlock x:Name="CostBreakdownName14" Grid.Row="15" Grid.Column="0" Padding="5" Text="Bacon" />
+                <TextBlock x:Name="CostBreakdownAddAmount14" Grid.Row="15" Grid.Column="1" Padding="5" Text="£0.95" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownRemoveAmount14" Grid.Row="15" Grid.Column="2" Padding="5" Text="£0.88" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownDiff14" Grid.Row="15" Grid.Column="3" Padding="5" Text="+2 Qty" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownCost14" Grid.Row="15" Grid.Column="4" Padding="5" Text="£1.90" TextAlignment="Right" />
+
+                <TextBlock x:Name="CostBreakdownName15" Grid.Row="16" Grid.Column="0" Padding="5" Text="Bacon" />
+                <TextBlock x:Name="CostBreakdownAddAmount15" Grid.Row="16" Grid.Column="1" Padding="5" Text="£0.95" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownRemoveAmount15" Grid.Row="16" Grid.Column="2" Padding="5" Text="£0.88" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownDiff15" Grid.Row="16" Grid.Column="3" Padding="5" Text="+2 Qty" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownCost15" Grid.Row="16" Grid.Column="4" Padding="5" Text="£1.90" TextAlignment="Right" />
+
+                <Border  Grid.Row="17" Grid.Column="0" Grid.ColumnSpan="5"  BorderBrush="Black" BorderThickness="0,1,0,1"/>
+                <TextBlock Grid.Row="17" Grid.Column="3" Padding="5" Text="Total" TextAlignment="Right" />
+                <TextBlock x:Name="CostBreakdownTotal" Grid.Row="17" Grid.Column="4" Padding="5" Text="£19.16" TextAlignment="Right" />
+
+                <controls:ClickableTile Grid.Row="18" Grid.Column="0" Grid.ColumnSpan="5" Text="Close" Padding="5" Click="CloseCostBreakdownPopup"/>
+            </Grid>
+        </Border>
+
+
+        <!-- Current Order and Process Buttons -->
+        <Border x:Name="LayoutCurrentOrderGrid" Grid.Row="0" Grid.Column="1" Grid.RowSpan="4"  BorderBrush="Black" BorderThickness="1,0,1,0"  Visibility="Hidden">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="5"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="0"/>
+                    <RowDefinition Height="50"/>
+                </Grid.RowDefinitions>
+
+
+                <!-- Current Order -->
+                <ScrollViewer Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Padding="5,0,5,0" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="170" />
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="50" />
+                            <ColumnDefinition Width="55" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="20"/>
+                            <RowDefinition Height="10"/>
+                            <RowDefinition Height="*"/>
+                            
+                        </Grid.RowDefinitions>
+                        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Product" FontWeight="Bold"/>
+                        <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Qty" FontWeight="Bold" />
+                        <TextBlock Grid.Row="0" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Right" Text="Each" FontWeight="Bold" />
+                        <TextBlock Grid.Row="0" Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Right" Text="Total" FontWeight="Bold"/>
+                        <Border Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="4"  BorderBrush="Black" BorderThickness="0,0,0,1"  />
+
+                        <StackPanel Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="4" x:Name="CurrentOrderDisplay">
+                        </StackPanel>
+
+                    </Grid>
+                </ScrollViewer>
+
+                <!-- Order Taker -->
+                <Border Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="1" Margin="5,0,5,5"  Background="Cyan"  CornerRadius="5" UIElement.MouseDown="OrderTakerClicked">                
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="10" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock Grid.Column="0"  FontSize="14"  VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold">Order Taker</TextBlock>
+
+                        <TextBlock FontSize="20" Grid.Column="1"  Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0,0,5,0"  FontWeight="Bold" x:Name="OrderTakerText">No One</TextBlock>
+
+                    </Grid>
+                </Border>
+
+                <!-- Order Discount -->
+                <Border Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="1" Margin="5,0,5,5"  Background="Cyan" CornerRadius="5" UIElement.MouseDown="ShowOrderDiscountScreen">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="10" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock FontSize="14" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"  FontWeight="Bold">Order Discount</TextBlock>
+
+                        <TextBlock x:Name="OrderDiscountTextBlock"  FontSize="20" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold">0%</TextBlock>
+
+                    </Grid>
+                </Border>
+                
+                <!-- Total Order Amount -->
+                <Border Grid.Row="5" Grid.Column="0" Grid.ColumnSpan="1" Margin="5,0,5,5"  Background="Cyan" CornerRadius="5">
+                    <Grid>
+
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="10" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock x:Name="CurrentOrderTotalTextBlock" Grid.Column="0"  FontSize="14"  VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold">Total</TextBlock>
+
+                        <TextBlock x:Name="CurrentOrderTotalValueTextBlock" FontSize="20" Grid.Column="1"  Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Padding="0,0,5,0"  FontWeight="Bold">£228.00</TextBlock>
+
+                    </Grid>
+                </Border>
+
+                <!-- Destination -->
+                <Border Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="1" Margin="5,0,5,5"  Background="Cyan" CornerRadius="5" UIElement.MouseDown="ShowTableSelectScreen">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="*" />
+                            <RowDefinition Height="10" />
+                        </Grid.RowDefinitions>
+
+                        <TextBlock x:Name="CurrentOrderTableNumberTextBlock" FontSize="14" Grid.Column="0" VerticalAlignment="Center" HorizontalAlignment="Center"  FontWeight="Bold">Table Number</TextBlock>
+
+                        <TextBlock x:Name="CurrentOrderTableNumberValueTextBlock" FontSize="20" Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontWeight="Bold">0</TextBlock>
+
+                    </Grid>
+                </Border>
+
+                <!-- Order Buttons -->
+                <Border Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Padding="5">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*" />
+                        </Grid.RowDefinitions>
+
+                        <Button x:Name="CurrentOrderCancelButton" Grid.Row="0" Grid.Column="0" Click="CancelOrderPressed" Margin="0,0,5,0" Background="Red">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </Button.Resources>
+                            <Button.Content>
+                                <TextBlock  FontSize="14">Cancel</TextBlock>
+                            </Button.Content>
+                        </Button>
+
+                        <Button x:Name="CurrentOrderPayByCardButton" Grid.Row="0" Grid.Column="1" Click="PayWithCard" Margin="5,0,5,0" Background="LightGreen" IsEnabled="false">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </Button.Resources>
+                            <Button.Content>
+                                <TextBlock FontSize="14">Card</TextBlock>
+                            </Button.Content>
+                        </Button>
+
+                        <Button x:Name="CurrentOrderPayByCashButton" Grid.Row="0" Grid.Column="2" Click="PayWithCash" Margin="5,0,0,0" Background="LightBlue" IsEnabled="false">
+                            <Button.Resources>
+                                <Style TargetType="Border">
+                                    <Setter Property="CornerRadius" Value="5"/>
+                                </Style>
+                            </Button.Resources>
+                            <Button.Content>
+                                <TextBlock FontSize="14">Cash</TextBlock>
+                            </Button.Content>
+                        </Button>
+                    </Grid>
+                </Border>
+            </Grid>
+
+        </Border>
+    </Grid>
+</Window>

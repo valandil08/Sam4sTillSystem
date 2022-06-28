@@ -1,0 +1,30 @@
+{
+    "UserLogins": [          
+        {
+            "name": "Admin",
+            "pin": "1234",
+            "manualEntryAllowed": true,
+            "fixedDiscountAllowed": true,
+            "refundAllowed": true,
+            "noSaleAllowed": true,
+            "noSaleActivationsAllowed": true,
+            "todaysStatsAllowed": true,
+            "hardwareSettingsAllowed": true,
+            "closeAppAllowed": true,
+            "enableTestModeAllowed": true
+        },         
+        {
+            "name": "Limited User",
+            "pin": "1234",
+            "manualEntryAllowed": false,
+            "fixedDiscountAllowed": false,
+            "refundAllowed": false,
+            "noSaleAllowed": false,
+            "noSaleActivationsAllowed": false,
+            "todaysStatsAllowed": false,
+            "hardwareSettingsAllowed": false,
+            "closeAppAllowed": false,
+            "enableTestModeAllowed": false
+        }
+    ]
+}

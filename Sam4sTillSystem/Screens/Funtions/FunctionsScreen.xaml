@@ -1,0 +1,85 @@
+﻿<UserControl x:Class="Sam4sTillSystem.Screens.Funtions.FunctionsScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sam4sTillSystem.Screens.Funtions" xmlns:controls="clr-namespace:Sam4sTillSystem.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid x:Name="FunctionButtonGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <controls:ClickableTileWithImage x:Name="FunctionsAddManualEntryButton" Grid.Row="0" Grid.Column="0" Margin="5, 5, 5, 5" Text="Manual Entry"  Click="AddManualEntryButtonPressed" ImagePath="/Images/PoundGreenIcon.png" />
+        <controls:ClickableTileWithImage x:Name="FunctionsAddDiscountButton" Grid.Row="0" Grid.Column="1" Margin="5, 5, 5, 5" Text="Fixed Discount"  Click="AddDiscountButtonPressed" ImagePath="/Images/PoundOrangeIcon.png" />
+        <controls:ClickableTileWithImage x:Name="FunctionsRefundButton" Grid.Row="0" Grid.Column="2" Margin="5, 5, 5, 5" Text="Refund"  Click="RefundButtonPressed" ImagePath="/Images/PoundRedIcon.png" />
+        <controls:ClickableTileWithImage x:Name="FunctionsNoSaleButton" Grid.Row="1" Grid.Column="0" Margin="5, 5, 5, 5" Text="No Sale"  Click="NoSalePressed" ImagePath="/Images/TillDrawIcon.png"/>
+
+        <controls:ClickableTileWithImage x:Name="FunctionsNoSaleActivationsButton" Grid.Row="1" Grid.Column="1" Margin="5, 5, 5, 5" Text="No Sale Activations"  Click="ShowNoSaleActivations" ImagePath="/Images/NoSaleActivationsIcon.png"/>
+        <controls:ClickableTileWithImage x:Name="FunctionsShowTodaysStatsButton" Grid.Row="1" Grid.Column="2" Margin="5, 5, 5, 5" Text="Todays Stats"  Click="ShowTodaysStats" ImagePath="/Images/StatsIcon.png" />
+
+        <controls:ClickableTileWithImage x:Name="FunctionsHardwareSettingsButton" Grid.Row="0" Grid.Column="3" Margin="5, 5, 5, 5" Text="Hardware Settings"  Click="PrinterSettingsPressed" ImagePath="/Images/HardwareSettingsIcon.png" />
+
+        <controls:ClickableTileWithImage x:Name="FunctionsCloseApplicationButton" Grid.Row="2" Grid.Column="0" Margin="5, 5, 5, 5" Text="Close App"  Click="CloseApplication" ImagePath="/Images/CloseIcon.png" />
+        <controls:ClickableTileWithImage x:Name="TestModeButton" Grid.Row="1" Grid.Column="3" Margin="5, 5, 5, 5" Text="Enable Test Mode" ImagePath="/Images/TestModeIcon.png" Click="EnableTestModePressed"/>
+
+        <Popup Grid.Row="0" Grid.Column="0"  Margin="10,10,0,13" x:Name="YesNoPopup" PopupAnimation="Fade" PlacementTarget="{Binding ElementName=FunctionButtonGrid}" Placement="Center" Width="600px" Height="580px" VerticalOffset="20px" IsOpen="false" AllowsTransparency="True">
+            <Border Padding="0,10,0,0" BorderBrush="Black" BorderThickness="1" CornerRadius="10" Background="White">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="40px" />
+                        <RowDefinition Height="1px" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="1px" />
+                        <RowDefinition Height="100px" />
+                    </Grid.RowDefinitions>
+
+                    <TextBlock x:Name="YesNoPopupTitle" Grid.Row="0" Grid.ColumnSpan="2" TextAlignment="Center" FontSize="20"> Restore Previous Config</TextBlock>
+                    <Border Grid.Row="1" Grid.ColumnSpan="2"  BorderBrush="Black" BorderThickness="0,0,0,1" ></Border>
+                    <TextBlock x:Name="YesNoPopupText" Grid.Row="2" Grid.ColumnSpan="2" VerticalAlignment="Center" TextAlignment="Center" FontSize="20">This is the content of the help box.</TextBlock>
+                    <Border Grid.Row="3" Grid.ColumnSpan="2" BorderBrush="Black" BorderThickness="0,0,0,1" ></Border>
+
+                    <Button FontSize="20" Grid.Row="4" Grid.Column="0" Margin="5" Click="YesNoPopup_NoPressed">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                        <Button.Content>
+                            No
+                        </Button.Content>
+                    </Button>
+
+                    <Button FontSize="20" Grid.Row="4" Grid.Column="1" Margin="5" Click="YesNoPopup_YesPressed">
+                        <Button.Resources>
+                            <Style TargetType="Border">
+                                <Setter Property="CornerRadius" Value="5"/>
+                            </Style>
+                        </Button.Resources>
+                        <Button.Content>
+                            Yes
+                        </Button.Content>
+                    </Button>
+                </Grid>
+            </Border>
+        </Popup>
+
+    </Grid>
+
+</UserControl>

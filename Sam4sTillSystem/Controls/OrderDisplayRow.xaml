@@ -1,0 +1,45 @@
+﻿<UserControl x:Class="Sam4sTillSystem.Controls.OrderDisplayRow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sam4sTillSystem.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid MouseDown="Grid_MouseDown" TouchDown="Grid_TouchDown">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="170" />
+            <ColumnDefinition Width="30" />
+            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="55" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Grid.Column="0" VerticalAlignment="Top" HorizontalAlignment="Left" Text="Sausage &amp; Egg Sandwich" FontWeight="Bold" x:Name="ProductName"/>
+        <TextBlock Grid.Row="0" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Left" Text="10" FontWeight="Bold"  x:Name="Quantity"/>
+        <TextBlock Grid.Row="0" Grid.Column="2" VerticalAlignment="Top" HorizontalAlignment="Right" Text="£11.40" FontWeight="Bold"  x:Name="CostEach"/>
+        <TextBlock Grid.Row="0" Grid.Column="3" VerticalAlignment="Top" HorizontalAlignment="Right" Text="£114.00" FontWeight="Bold" x:Name="CostTotal"/>
+        <Grid Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4" Margin="0,5,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="170" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0" Grid.Column="0" x:Name="LeftOptionsDisplay">
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="+1 Brown B&amp;B" Padding="5,0,0,0"/>
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="+2 Bacon" Padding="5,0,0,0"/>
+            </StackPanel>
+            <StackPanel Grid.Row="0" Grid.Column="1" x:Name="RightOptionsDisplay">
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="+2 Beans" />
+                <TextBlock VerticalAlignment="Center" HorizontalAlignment="Left" Text="+2 Sausage Potatoes" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+
+</UserControl>

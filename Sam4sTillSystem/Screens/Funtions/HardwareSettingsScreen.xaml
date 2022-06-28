@@ -1,0 +1,137 @@
+﻿<UserControl x:Class="Sam4sTillSystem.Screens.Funtions.HardwareSettingsScreen"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Sam4sTillSystem.Screens.Funtions" xmlns:controls="clr-namespace:Sam4sTillSystem.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="768" d:DesignWidth="1024">
+    <Grid x:Name="PrinterSettingsScreenGrid">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="115px" />
+            <ColumnDefinition Width="5px" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20px" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20px" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="20px" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20px" />
+            
+            <RowDefinition Height="30px" />
+            <RowDefinition Height="50px" />
+
+            <RowDefinition Height="45px" />
+            
+            <RowDefinition Height="30px" />
+            <RowDefinition Height="50px" />
+
+            <RowDefinition Height="45px" />
+            
+            <RowDefinition Height="30px" />
+            <RowDefinition Height="50px" />
+
+            <RowDefinition Height="45px" />
+
+            <RowDefinition Height="*" />
+            
+            <RowDefinition Height="155px" />
+        </Grid.RowDefinitions>
+
+
+
+        <TextBlock Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="1" Text="Chefs Printers" TextAlignment="Center" VerticalAlignment="Top"/>
+
+        <Image Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="2"  Height="50" Width="50" Source="/Images/KitchenPrinterIcon.png"  />
+
+        <TextBlock Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="1" Text="Main" TextAlignment="Center" VerticalAlignment="Top"/>
+
+        <TextBlock Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="1" Text="Backup 1" TextAlignment="Center" VerticalAlignment="Top"/>
+
+        <TextBlock Grid.Column="8" Grid.ColumnSpan="2" Grid.Row="1" Text="Backup 2" TextAlignment="Center" VerticalAlignment="Top"/>
+
+        <ComboBox x:Name="ChefsPrinterMainList" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="2" Text="Receipt Printer"  Background="AliceBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" SelectionChanged="SelectionChanged">
+            <ComboBoxItem VerticalContentAlignment="Center" HorizontalContentAlignment="Center">ComboBox Item #1</ComboBoxItem>
+            <ComboBoxItem VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsSelected="True">ComboBox Item #2</ComboBoxItem>
+            <ComboBoxItem VerticalContentAlignment="Center" HorizontalContentAlignment="Center">ComboBox Item #3</ComboBoxItem>
+        </ComboBox>
+
+        <ComboBox x:Name="ChefsPrinterBackupOneList" Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="2" Text="Receipt Printer"  Background="AliceBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" SelectionChanged="SelectionChanged">
+            <ComboBoxItem VerticalContentAlignment="Center" HorizontalContentAlignment="Center">ComboBox Item #1</ComboBoxItem>
+            <ComboBoxItem VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsSelected="True">ComboBox Item #2</ComboBoxItem>
+            <ComboBoxItem VerticalContentAlignment="Center" HorizontalContentAlignment="Center">ComboBox Item #3</ComboBoxItem>
+            <ComboBoxItem VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsSelected="True" Height="50">None</ComboBoxItem>
+        </ComboBox>
+
+        <ComboBox x:Name="ChefsPrinterBackupTwoList" Grid.Column="8" Grid.ColumnSpan="2" Grid.Row="2" Text="Chefs Printer" Background="AliceBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" SelectionChanged="SelectionChanged">
+            <ComboBoxItem VerticalContentAlignment="Center" HorizontalContentAlignment="Center">ComboBox Item #1</ComboBoxItem>
+            <ComboBoxItem VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsSelected="True">ComboBox Item #2</ComboBoxItem>
+            <ComboBoxItem VerticalContentAlignment="Center" HorizontalContentAlignment="Center">ComboBox Item #3</ComboBoxItem>
+        </ComboBox>
+
+        <!-- Line Below Screen Title -->
+        <Border Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="11" BorderBrush="Black" BorderThickness="0,0,0,1" VerticalAlignment="Center" ></Border>
+
+
+
+        <TextBlock Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="4" Text="Receipt Printers" TextAlignment="Center" VerticalAlignment="Top" Padding="10,0,0,0"/>
+
+        <Image Grid.Column="0" Grid.ColumnSpan="1" Grid.Row="5"  Height="50" Width="50" Source="/Images/ReceiptPrinterIcon.png"  />
+
+        <TextBlock Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="4" Text="Main" TextAlignment="Center" VerticalAlignment="Top"/>
+
+        <TextBlock Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="4" Text="Backup 1" TextAlignment="Center" VerticalAlignment="Top"/>
+
+        <TextBlock Grid.Column="8" Grid.ColumnSpan="2" Grid.Row="4" Text="Backup 2" TextAlignment="Center" VerticalAlignment="Top"/>
+
+
+        <ComboBox x:Name="ReceiptPrinterList" Grid.Column="2" Grid.ColumnSpan="2" Grid.Row="5" Text="Receipt Printer"  Background="AliceBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" SelectionChanged="SelectionChanged">
+            <ComboBoxItem VerticalContentAlignment="Center" HorizontalContentAlignment="Center">ComboBox Item #1</ComboBoxItem>
+            <ComboBoxItem VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsSelected="True">ComboBox Item #2</ComboBoxItem>
+            <ComboBoxItem VerticalContentAlignment="Center" HorizontalContentAlignment="Center">ComboBox Item #3</ComboBoxItem>
+        </ComboBox>
+
+        <ComboBox x:Name="ReceiptPrinterBackupOneList" Grid.Column="5" Grid.ColumnSpan="2" Grid.Row="5" Text="Chefs Printer" Background="AliceBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" SelectionChanged="SelectionChanged">
+            <ComboBoxItem VerticalContentAlignment="Center" HorizontalContentAlignment="Center">ComboBox Item #1</ComboBoxItem>
+            <ComboBoxItem VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsSelected="True">ComboBox Item #2</ComboBoxItem>
+            <ComboBoxItem VerticalContentAlignment="Center" HorizontalContentAlignment="Center">ComboBox Item #3</ComboBoxItem>
+            <ComboBoxItem VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsSelected="True" Height="50">None</ComboBoxItem>
+        </ComboBox>
+
+        <ComboBox x:Name="ReceiptPrinterBackupTwoList" Grid.Column="8" Grid.ColumnSpan="2" Grid.Row="5" Text="Chefs Printer" Background="AliceBlue" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" SelectionChanged="SelectionChanged">
+            <ComboBoxItem VerticalContentAlignment="Center" HorizontalContentAlignment="Center">ComboBox Item #1</ComboBoxItem>
+            <ComboBoxItem VerticalContentAlignment="Center" HorizontalContentAlignment="Center" IsSelected="True">ComboBox Item #2</ComboBoxItem>
+            <ComboBoxItem VerticalContentAlignment="Center" HorizontalContentAlignment="Center">ComboBox Item #3</ComboBoxItem>
+        </ComboBox>
+
+        
+        <Border Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="11" BorderBrush="Black" BorderThickness="0,0,0,1" VerticalAlignment="Center" ></Border>
+        
+        <TextBlock x:Name="HardwareSettingsChangesSavedReadout" Grid.Column="0" Grid.ColumnSpan="11" Grid.Row="9" Grid.RowSpan="2" Text="Changes Saved" TextAlignment="Center" VerticalAlignment="Center" Visibility="Hidden" Margin="0,20,0,0"/>
+
+
+        <Border Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="11" BorderBrush="Black" BorderThickness="0,0,0,1" VerticalAlignment="Bottom" ></Border>
+
+        <Grid Grid.Column="0" Grid.ColumnSpan="11" Grid.Row="11">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <controls:ClickableTile Grid.Row="0" Grid.Column="0" Margin="5, 5, 5, 5" Text="Apply" Click="SaveHardwareSettings_Click" />
+            <controls:ClickableTile Grid.Row="0" Grid.Column="2" Margin="5, 5, 5, 5" Text="Undo" Click="UndoHardwareSettings_Click" />
+        </Grid>
+
+
+    </Grid>
+
+</UserControl>
